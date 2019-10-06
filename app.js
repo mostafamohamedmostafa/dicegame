@@ -14,7 +14,7 @@ GAME RULES:
 //activePlayer is for dermination of active player (playing now)
 // dice variable (a random number form 1 to 6 )
 
-var scores, roundScore, activePlayer, dice;
+var scores, roundScore, activePlayer;  //dice;
 //setting the varibles values
 //scores is array starts with 0 
 // roundScore starts with 0
@@ -22,19 +22,51 @@ var scores, roundScore, activePlayer, dice;
 //set dice var math.floor to make number without decimals and math.random choose number from 0 to 1
 // * 6 to make the value from (1 to 5) AND TO MAKE FROM (1 TO 6 WE HAVE TO ADD 1)
 
-scores = [0,0];
+scores = [0, 0];
 roundScore = 0;
 activePlayer = 0;
-dice = Math.floor(Math.random() * 6) + 1;
+//dice = Math.floor(Math.random() * 6) + 1;
 
 // selection of item in html file current-0 (round score) to select player one score
 // to show the text of the dice we have to add .textcontent and 
 // make all of this == to dice value (form 1 to 6)
 // active player change player bettwen 2 players
-document.querySelector('#current-' + activePlayer).textContent = dice ;
+//document.querySelector('#current-' + activePlayer).textContent = dice;
 
 // to hide the dice pic form the begining 
 // in html pic with class named dice
 // to hide the pic from begining style.display = 'none';  
 document.querySelector('.dice').style.display = 'none';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// creating function to show a random dice pic based on random dice and selecting but roll in html
+
+document.querySelector('.btn-roll').addEventListener('click', function () {
+// 1. Random number
+var dice = Math.floor(Math.random() * 6) + 1;
+
+//2. Display the result
+var diceDOM = document.querySelector('.dice');
+diceDOM.style.display = 'block';
+diceDOM.src = 'dice-' + dice + '.png';
+});
