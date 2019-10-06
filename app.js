@@ -22,35 +22,12 @@ var scores, roundScore, activePlayer;  //dice;
 //set dice var math.floor to make number without decimals and math.random choose number from 0 to 1
 // * 6 to make the value from (1 to 5) AND TO MAKE FROM (1 TO 6 WE HAVE TO ADD 1)
 
+init();
+
 scores = [0, 0];
 roundScore = 0;
 activePlayer = 0;
 //dice = Math.floor(Math.random() * 6) + 1;
-
-// selection of item in html file current-0 (round score) to select player one score
-// to show the text of the dice we have to add .textcontent and 
-// make all of this == to dice value (form 1 to 6)
-// active player change player bettwen 2 players
-//document.querySelector('#current-' + activePlayer).textContent = dice;
-
-// to hide the dice pic form the begining 
-// in html pic with class named dice
-// to hide the pic from begining style.display = 'none';  
-document.querySelector('.dice').style.display = 'none';
-
-// setting the value of total score ( scroe - o for player 1) and score 1 for other player 
-
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-
-// setting the value of current score ( current- o for player 1) and score 1 for other player 
-
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
-
-
-
-
 
 // creating function to show a random dice pic based on random dice and selecting but roll in html
 
@@ -125,3 +102,37 @@ function nextPlayer() {
     // hide the dice pic once the player rounds
     document.querySelector('.dice').style.display = 'none';
 }
+
+//set a new game button to rest and create a new game
+document.querySelector('.btn-new').addEventListener('click', function () {
+    init();
+
+});
+
+function init() {
+    scores = [0, 0];
+    activePlayer = 0;
+    roundScore = 0;
+
+    // selection of item in html file current-0 (round score) to select player one score
+    // to show the text of the dice we have to add .textcontent and 
+    // make all of this == to dice value (form 1 to 6)
+    // active player change player bettwen 2 players
+    //document.querySelector('#current-' + activePlayer).textContent = dice;
+
+    // to hide the dice pic form the begining 
+    // in html pic with class named dice
+    // to hide the pic from begining style.display = 'none';  
+    document.querySelector('.dice').style.display = 'none';
+
+    // setting the value of total score ( scroe - o for player 1) and score 1 for other player 
+
+    document.getElementById('score-0').textContent = '0';
+    document.getElementById('score-1').textContent = '0';
+
+    // setting the value of current score ( current- o for player 1) and score 1 for other player 
+
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+
+};
