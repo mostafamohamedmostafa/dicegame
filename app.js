@@ -104,10 +104,7 @@ function nextPlayer() {
 }
 
 //set a new game button to rest and create a new game
-document.querySelector('.btn-new').addEventListener('click', function () {
-    init();
-
-});
+document.querySelector('.btn-new').addEventListener('click', init);
 
 function init() {
     scores = [0, 0];
@@ -134,5 +131,12 @@ function init() {
 
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
+
+
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.querySelector('.player-0-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.add('active');
+    document.querySelector('.player-1-panel').classList.remove('active');
 
 };
