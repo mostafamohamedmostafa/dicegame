@@ -38,10 +38,15 @@ activePlayer = 0;
 // to hide the pic from begining style.display = 'none';  
 document.querySelector('.dice').style.display = 'none';
 
+// setting the value of total score ( scroe - o for player 1) and score 1 for other player 
 
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
 
+// setting the value of current score ( current- o for player 1) and score 1 for other player 
 
-
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
 
 
 
