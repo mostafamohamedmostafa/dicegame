@@ -72,27 +72,56 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     } else {
         // next player
 
-        // if player === 0  check player and change it
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-        // to set round score to 0
-        roundScore = 0;
-        document.getElementById('current-0').textContent = '0';
-        document.getElementById('current-1').textContent = '0';
+        nextPlayer();
+    }
+});
 
-        // to show who the active player is in user interface
-        // choosing in html player - 0 - panel and its a class choose remove active class to remove from player 1
-        // add player 1 to make him appear active and if player 1 is active again make him appears active
 
-        document.querySelector('.player-0-panel').classList.toggle('active');
-        document.querySelector('.player-1-panel').classList.toggle('active');
 
-        // hide the dice pic once the player rounds end
+document.querySelector('.btn-hold').addEventListener('click', function () {
+    // addding player current score to player total score
+    scores[activePlayer] += roundScore;
+
+    // updating the ui to show the total score for each player
+
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+
+    // check if player wins
+
+    if (scores[activePlayer] >= 100) {
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner ^_^'
+
+        // to hide dice if player wins
         document.querySelector('.dice').style.display = 'none';
 
-
-
+    } else {
+        // Next Player
+        nextPlayer();
     }
 
 
 
-});
+})
+
+
+// create nextPlayer Funtion inorder to not repate the code
+function nextPlayer() {
+    // next player
+
+    // if player === 0  check player and change it
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    // to set round score to 0
+    roundScore = 0;
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+
+    // to show who the active player is in user interface
+    // choosing in html player - 0 - panel and its a class choose remove active class to remove from player 1
+    // add player 1 to make him appear active and if player 1 is active again make him appears active
+
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+    // hide the dice pic once the player rounds
+    document.querySelector('.dice').style.display = 'none';
+}
