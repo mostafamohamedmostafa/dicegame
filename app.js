@@ -75,7 +75,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         // if player === 0  check player and change it
         activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         // to set round score to 0
-        roundScore = 0 ;
+        roundScore = 0;
         document.getElementById('current-0').textContent = '0';
         document.getElementById('current-1').textContent = '0';
 
@@ -85,6 +85,10 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
 
         document.querySelector('.player-0-panel').classList.toggle('active');
         document.querySelector('.player-1-panel').classList.toggle('active');
+
+        // hide the dice pic once the player rounds end
+        document.querySelector('.dice').style.display = 'none';
+
 
 
     }
