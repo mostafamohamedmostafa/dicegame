@@ -79,6 +79,13 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         document.getElementById('current-0').textContent = '0';
         document.getElementById('current-1').textContent = '0';
 
+        // to show who the active player is in user interface
+        // choosing in html player - 0 - panel and its a class choose remove active class to remove from player 1
+        // add player 1 to make him appear active and if player 1 is active again make him appears active
+
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+
 
     }
 
