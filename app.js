@@ -8,3 +8,27 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 
 */
+//creating varaibles for the game
+// scores varaible is for total score
+// roundScore is for round score record
+//activePlayer is for dermination of active player (playing now)
+// dice variable (a random number form 1 to 6 )
+
+var scores, roundScore, activePlayer, dice;
+//setting the varibles values
+//scores is array starts with 0 
+// roundScore starts with 0
+// activePlayer 0 (first player ) and 1 (second player)
+//set dice var math.floor to make number without decimals and math.random choose number from 0 to 1
+// * 6 to make the value from (1 to 5) AND TO MAKE FROM (1 TO 6 WE HAVE TO ADD 1)
+
+scores = [0,0];
+roundScore = 0;
+activePlayer = 0;
+dice = Math.floor(Math.random() * 6) + 1;
+
+// selection of item in html file current-0 (round score) to select player one score
+// to show the text of the dice we have to add .textcontent and 
+// make all of this == to dice value (form 1 to 6)
+document.querySelector('#current-0').textContent = dice ;
+
