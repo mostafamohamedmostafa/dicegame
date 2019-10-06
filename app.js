@@ -13,8 +13,9 @@ GAME RULES:
 // roundScore is for round score record
 //activePlayer is for dermination of active player (playing now)
 // dice variable (a random number form 1 to 6 )
+// adding new var called gamePlaying to stop roll dice to act even the game is ended
 
-var scores, roundScore, activePlayer;  //dice;
+var scores, roundScore, activePlayer, gamePlaying ;  //dice;
 //setting the varibles values
 //scores is array starts with 0 
 // roundScore starts with 0
@@ -32,48 +33,61 @@ activePlayer = 0;
 // creating function to show a random dice pic based on random dice and selecting but roll in html
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
-    // 1. Random number
-    var dice = Math.floor(Math.random() * 6) + 1;
+    // adding condition to make roll button stops when the game is ended
+    if (gamePlaying) {
+        // 1. Random number
+        var dice = Math.floor(Math.random() * 6) + 1;
 
-    //2. Display the result
-    var diceDOM = document.querySelector('.dice');
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png';
+        //2. Display the result
+        var diceDOM = document.querySelector('.dice');
+        diceDOM.style.display = 'block';
+        diceDOM.src = 'dice-' + dice + '.png';
 
-    //3 update the dice score if not equal to 1
-    if (dice !== 1) {
-        //add score
-        roundScore += dice;
-        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+        //3 update the dice score if not equal to 1
+        if (dice !== 1) {
+            //add score
+            roundScore += dice;
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
 
-    } else {
-        // next player
+        } else {
+            // next player
 
-        nextPlayer();
+            nextPlayer();
+        }
+
     }
 });
 
 
 
 document.querySelector('.btn-hold').addEventListener('click', function () {
-    // addding player current score to player total score
-    scores[activePlayer] += roundScore;
 
-    // updating the ui to show the total score for each player
 
-    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+    if (gamePlaying) {
+        // addding player current score to player total score
+        scores[activePlayer] += roundScore;
 
-    // check if player wins
+        // updating the ui to show the total score for each player
 
-    if (scores[activePlayer] >= 100) {
-        document.querySelector('#name-' + activePlayer).textContent = 'Winner ^_^'
+        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-        // to hide dice if player wins
-        document.querySelector('.dice').style.display = 'none';
+        // check if player wins
 
-    } else {
-        // Next Player
-        nextPlayer();
+        if (scores[activePlayer] >= 100) {
+            document.querySelector('#name-' + activePlayer).textContent = 'Winner ^_^'
+
+            // to hide dice if player wins
+            document.querySelector('.dice').style.display = 'none';
+
+            gamePlaying = false;
+
+        } else {
+            // Next Player
+            nextPlayer();
+
+
+        }
+
     }
 
 
@@ -110,6 +124,7 @@ function init() {
     scores = [0, 0];
     activePlayer = 0;
     roundScore = 0;
+    gamePlaying= true;
 
     // selection of item in html file current-0 (round score) to select player one score
     // to show the text of the dice we have to add .textcontent and 
@@ -140,3 +155,4 @@ function init() {
     document.querySelector('.player-1-panel').classList.remove('active');
 
 };
+
