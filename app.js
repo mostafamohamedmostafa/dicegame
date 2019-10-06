@@ -52,26 +52,36 @@ document.getElementById('current-1').textContent = '0';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // creating function to show a random dice pic based on random dice and selecting but roll in html
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
-// 1. Random number
-var dice = Math.floor(Math.random() * 6) + 1;
+    // 1. Random number
+    var dice = Math.floor(Math.random() * 6) + 1;
 
-//2. Display the result
-var diceDOM = document.querySelector('.dice');
-diceDOM.style.display = 'block';
-diceDOM.src = 'dice-' + dice + '.png';
+    //2. Display the result
+    var diceDOM = document.querySelector('.dice');
+    diceDOM.style.display = 'block';
+    diceDOM.src = 'dice-' + dice + '.png';
+
+    //3 update the dice score if not equal to 1
+    if (dice !== 1) {
+        //add score
+        roundScore += dice;
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+
+    } else {
+        // next player
+
+        // if player === 0  check player and change it
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        // to set round score to 0
+        roundScore = 0 ;
+        document.getElementById('current-0').textContent = '0';
+        document.getElementById('current-1').textContent = '0';
+
+
+    }
+
+
+
 });
