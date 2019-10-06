@@ -30,5 +30,11 @@ dice = Math.floor(Math.random() * 6) + 1;
 // selection of item in html file current-0 (round score) to select player one score
 // to show the text of the dice we have to add .textcontent and 
 // make all of this == to dice value (form 1 to 6)
-document.querySelector('#current-0').textContent = dice ;
+// active player change player bettwen 2 players
+document.querySelector('#current-' + activePlayer).textContent = dice ;
+
+// to hide the dice pic form the begining 
+// in html pic with class named dice
+// to hide the pic from begining style.display = 'none';  
+document.querySelector('.dice').style.display = 'none';
 
